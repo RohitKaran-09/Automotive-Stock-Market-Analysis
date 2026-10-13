@@ -56,6 +56,13 @@ FINANCIALS = {
         "cfo": 11657.36,
         "capex_ppe_intangibles": 9605.45,
         "cash_end": 4292.24,
+        "total_assets": 317634.64,
+        "total_current_assets": 147139.62,
+        "total_current_liabilities": 116098.56,
+        "total_equity": 109491.00,
+        "owner_equity": 93096.35,
+        "noncurrent_borrowings": 73469.93,
+        "current_borrowings": 56144.57,
         "operating_margin_pct_company_reported": None,
     },
     "FY25": {
@@ -75,6 +82,13 @@ FINANCIALS = {
         "cfo": 3175.81,
         "capex_ppe_intangibles": 10391.95,
         "cash_end": 4923.89,
+        "total_assets": 277586.27,
+        "total_current_assets": 126573.27,
+        "total_current_liabilities": 90322.01,
+        "total_equity": 89098.00,
+        "owner_equity": 77038.86,
+        "noncurrent_borrowings": 79707.19,
+        "current_borrowings": 41465.76,
         "operating_margin_pct_company_reported": None,
     }
 }
@@ -230,6 +244,13 @@ def fundamentals_frame():
             "ROE (%) company reported": d["roe_pct_company_reported"],
             "EPS (₹) company reported": d["eps_rupees_company_reported"],
             "Finance costs (₹ crore)": d["finance_costs"],
+            "Total assets (₹ crore)": d["total_assets"],
+            "Current assets (₹ crore)": d["total_current_assets"],
+            "Current liabilities (₹ crore)": d["total_current_liabilities"],
+            "Total equity including NCI (₹ crore)": d["total_equity"],
+            "Borrowings (current + non-current, ₹ crore)": d["current_borrowings"] + d["noncurrent_borrowings"],
+            "Current ratio (x)": d["total_current_assets"] / d["total_current_liabilities"],
+            "Gross borrowings / total equity (x)": (d["current_borrowings"] + d["noncurrent_borrowings"]) / d["total_equity"],
         })
     f = pd.DataFrame(rows).set_index("FY")
     f.loc["FY26", "Income growth (%)"] = (FINANCIALS["FY26"]["income_from_operations"] / FINANCIALS["FY25"]["income_from_operations"] - 1) * 100
@@ -460,14 +481,20 @@ def build_report(fin_df, tech, summary, paths, metadata):
       ["CFO less PPE/intangible capex FY25",f"₹{fc25:,.2f} cr","CFO − purchase of PPE and intangible assets; simplified proxy"],
       ["CFO less PPE/intangible capex FY26",f"₹{fc26:,.2f} cr","CFO − purchase of PPE and intangible assets; simplified proxy"],
       ["Company-reported RoE FY26","20.1%","M&M FY26 results release; denominator methodology per company report"],
-      ["Company-reported EPS FY26","₹152.20","M&M FY26 results release"]
+      ["Company-reported EPS FY26","₹152.20","M&M FY26 results release"],
+      ["Total assets FY25","₹277,586.27 cr","Audited consolidated balance sheet at 31 March 2025"],
+      ["Total assets FY26","₹317,634.64 cr","Audited consolidated balance sheet at 31 March 2026"],
+      ["Total current assets / current liabilities FY25","1.40x","Current assets divided by current liabilities; group-wide indicator only"],
+      ["Total current assets / current liabilities FY26","1.27x","Current assets divided by current liabilities; group-wide indicator only"],
+      ["Gross borrowings / total equity FY25","1.36x","Current plus non-current borrowings / total equity including NCI; not an industrial net-debt ratio"],
+      ["Gross borrowings / total equity FY26","1.18x","Current plus non-current borrowings / total equity including NCI; not an industrial net-debt ratio"]
     ]
     table=doc.add_table(rows=1,cols=3);table.style="Light Shading Accent 1"
     for c,t in zip(table.rows[0].cells,["Ratio / measure","Result","Formula / basis"]):c.text=t
     for row in ratio_rows:
       cells=table.add_row().cells
       for cell,value in zip(cells,row):cell.text=value
-    doc.add_paragraph("The CFO-minus-capex metric is not a full standardized free-cash-flow calculation. Consolidated cash-flow statements include financial-services receivables, investment purchases and sales, deposits and other group flows. A manufacturer-only cash conversion ratio would require segment-level detail and consistent working-capital definitions. For the same reason, a generic current ratio or debt/equity figure for this diversified group may mislead if read as a pure automotive metric.")
+    doc.add_paragraph("The audited consolidated balance sheet reports total assets of ₹277,586.27 crore at March 2025 and ₹317,634.64 crore at March 2026; total equity including non-controlling interests increased from ₹89,098.00 crore to ₹109,491.00 crore. Total current assets / total current liabilities decreased from 1.40x to 1.27x, while current plus non-current borrowings divided by total equity decreased from approximately 1.36x to 1.18x [F6]. These are broad group ratios only: the group includes a large lending business, whose loans, funding and liquidity profile are fundamentally different from the inventory-and-trade-credit model of a vehicle manufacturer. They should not be interpreted as a standalone automotive working-capital or industrial gearing test.")
     doc.add_heading("3.3 Cash flow and capital allocation",2)
     doc.add_paragraph(
       f"Net cash flow from operating activities increased from ₹{fy25['cfo']:,.2f} crore in FY25 to ₹{fy26['cfo']:,.2f} crore in FY26 [F2]. Purchase of property, plant, equipment and intangible assets was ₹{fy26['capex_ppe_intangibles']:,.2f} crore in FY26, lower than ₹{fy25['capex_ppe_intangibles']:,.2f} crore in FY25. On the simple CFO-minus-capex proxy, the result moved from ₹{fc25:,.2f} crore to ₹{fc26:,.2f} crore. The increase in operating cash flow is encouraging, yet the proxy should not be over-read because changes in financial-services receivables are material in consolidated operating cash flow [F2]."
