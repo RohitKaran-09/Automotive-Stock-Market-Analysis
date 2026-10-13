@@ -508,6 +508,9 @@ def build_report(fin_df, tech, summary, paths, metadata):
     header_props.append(header_flag)
     for row in ratio_rows:
       cells=table.add_row().cells
+      row_props = table.rows[-1]._tr.get_or_add_trPr()
+      row_no_split = OxmlElement("w:cantSplit")
+      row_props.append(row_no_split)
       for cell,value in zip(cells,row):cell.text=value
     doc.add_paragraph("The audited consolidated balance sheet reports total assets of ₹277,586.27 crore at March 2025 and ₹317,634.64 crore at March 2026; total equity including non-controlling interests increased from ₹89,098.00 crore to ₹109,491.00 crore. Total current assets / total current liabilities decreased from 1.40x to 1.27x, while current plus non-current borrowings divided by total equity decreased from approximately 1.36x to 1.18x [F6]. These are broad group ratios only: the group includes a large lending business, whose loans, funding and liquidity profile are fundamentally different from the inventory-and-trade-credit model of a vehicle manufacturer. They should not be interpreted as a standalone automotive working-capital or industrial gearing test.")
     doc.add_heading("3.3 Cash flow and capital allocation",2)
