@@ -125,6 +125,12 @@ SOURCES = [
         "use": "Management narrative, sector overview, market share, segment and strategic context."
     },
     {
+        "id": "F6",
+        "title": "Mahindra & Mahindra audited FY26 consolidated balance sheet, in Q4 FY26 results PDF",
+        "url": "https://www.mahindra.com/sites/default/files/2026-05/Outcome%20of%20Board%20Meeting%20and%20Financial%20Results%20-%205th%20May%202026.pdf",
+        "use": "Total assets, equity, current assets/liabilities and current/non-current borrowings at 31 March 2026 and 31 March 2025."
+    },
+    {
         "id": "T1",
         "title": "Yahoo Finance public historical market data interface (accessed at run time)",
         "url": "https://finance.yahoo.com/",
@@ -303,6 +309,8 @@ def calculate_technical_summary(frames, tech_frames):
             "volume": volume,
             "volume_sma20": volavg,
             "max_drawdown_5y": float(hist["Drawdown"].min()),
+            "support_60d": float(hist.loc[hist.index >= hist.index.max()-pd.Timedelta(days=90), "Low"].min()) if "Low" in hist else None,
+            "resistance_60d": float(hist.loc[hist.index >= hist.index.max()-pd.Timedelta(days=90), "High"].max()) if "High" in hist else None,
         }
     return summary
 
@@ -518,7 +526,7 @@ def build_report(fin_df, tech, summary, paths, metadata):
     doc.add_heading("4.4 Bollinger Bands and volatility",2)
     doc.add_paragraph("The chart uses a 20-session moving average with bands at two rolling standard deviations above and below the midline. A widening band suggests higher realized price dispersion, while narrowing bands show a quieter period that may precede renewed movement—but the direction is unknown from band width alone. Price touching an upper band does not automatically mean it is overvalued; it can accompany a strong trend.")
     doc.add_heading("4.5 Volume, support/resistance and drawdown",2)
-    doc.add_paragraph(f"The latest observation's volume was {fmt_num(s['volume'],0)} shares versus a 20-day average of {fmt_num(s['volume_sma20'],0)} where available. Volume helps assess whether a price move attracted more or less participation, but data vendor conventions and block trades can affect the series. The report visualizes the one-year high/low context (₹{fmt_num(s['low_52w'])}–₹{fmt_num(s['high_52w'])}) and five-year maximum drawdown of {fmt_pct(s['max_drawdown_5y'])}. Those extrema are historical, not formal support/resistance levels; chart-based levels are zones, not precise guarantees.")
+    doc.add_paragraph(f"The latest observation's volume was {fmt_num(s['volume'],0)} shares versus a 20-day average of {fmt_num(s['volume_sma20'],0)} where available. Volume helps assess whether a price move attracted more or less participation, but data vendor conventions and block trades can affect the series. The one-year high/low context was ₹{fmt_num(s['low_52w'])}–₹{fmt_num(s['high_52w'])}; a rough recent 60-trading-day support/resistance proxy based on the last 90 calendar days is ₹{fmt_num(s['support_60d'])}/₹{fmt_num(s['resistance_60d'])}. The five-year maximum drawdown was {fmt_pct(s['max_drawdown_5y'])}. These are historical zones, not precise guarantees or trade instructions.")
     doc.add_heading("4.6 Relative performance",2)
     if d_summary:
       doc.add_paragraph(f"Over the observed one-year window, M&M price return was {fmt_pct(s['return_1y'])} and Nifty 50 was {fmt_pct(d_summary['return_1y'])}; over three years, M&M was {fmt_pct(s['return_3y'])} and Nifty 50 {fmt_pct(d_summary['return_3y'])}. For Maruti Suzuki, the one-year price return was {fmt_pct(maruti.get('return_1y'))}. These are window-specific price returns, not forecasts or total-return comparisons.")
