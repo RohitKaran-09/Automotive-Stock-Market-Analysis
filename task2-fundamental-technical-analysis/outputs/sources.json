@@ -30,6 +30,12 @@
     "use": "Management narrative, sector overview, market share, segment and strategic context."
   },
   {
+    "id": "F6",
+    "title": "Mahindra & Mahindra audited FY26 consolidated balance sheet, in Q4 FY26 results PDF",
+    "url": "https://www.mahindra.com/sites/default/files/2026-05/Outcome%20of%20Board%20Meeting%20and%20Financial%20Results%20-%205th%20May%202026.pdf",
+    "use": "Total assets, equity, current assets/liabilities and current/non-current borrowings at 31 March 2026 and 31 March 2025."
+  },
+  {
     "id": "T1",
     "title": "Yahoo Finance public historical market data interface (accessed at run time)",
     "url": "https://finance.yahoo.com/",

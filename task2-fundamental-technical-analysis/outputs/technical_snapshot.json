@@ -19,7 +19,9 @@
     "RSI_state": "RSI in conventional oversold zone (<=30)",
     "volume": 1907713.0,
     "volume_sma20": 2445979.2,
-    "max_drawdown_5y": -0.2809018050910935
+    "max_drawdown_5y": -0.2809018050910935,
+    "support_60d": 2744.300048828125,
+    "resistance_60d": 3534.60009765625
   },
   "MARUTI.NS": {
     "name": "Maruti Suzuki",
@@ -41,7 +43,9 @@
     "RSI_state": "RSI in middle range (30\u201370)",
     "volume": 323997.0,
     "volume_sma20": 420127.95,
-    "max_drawdown_5y": -0.3506823964839232
+    "max_drawdown_5y": -0.3506823964839232,
+    "support_60d": 11225.0,
+    "resistance_60d": 14440.0
   },
   "^NSEI": {
     "name": "Nifty 50",
@@ -63,6 +67,8 @@
     "RSI_state": "RSI in middle range (30\u201370)",
     "volume": 258800.0,
     "volume_sma20": 324120.0,
-    "max_drawdown_5y": -0.17229756084670067
+    "max_drawdown_5y": -0.17229756084670067,
+    "support_60d": 22179.900390625,
+    "resistance_60d": 24774.30078125
   }
 }
