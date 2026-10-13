@@ -1,0 +1,44 @@
+[
+  {
+    "id": "F1",
+    "title": "Mahindra & Mahindra Ltd., Integrated Annual Report 2025\u201326, Board's Report financial highlights (page 98)",
+    "url": "https://www.mahindra.com/annual-report-FY2026/98/",
+    "use": "Audited FY26/FY25 consolidated results, income, profit, tax and attributable earnings."
+  },
+  {
+    "id": "F2",
+    "title": "Mahindra & Mahindra Ltd., Integrated Annual Report 2025\u201326, Consolidated Statement of Cash Flows (page 397)",
+    "url": "https://www.mahindra.com/annual-report-FY2026/397/",
+    "use": "Operating cash flow, capex on property, plant, equipment and intangible assets, and investing cash flows."
+  },
+  {
+    "id": "F3",
+    "title": "Mahindra & Mahindra, M&M Results Q4 F26 and FY26, 5 May 2026",
+    "url": "https://www.mahindra.com/news-room/press-release/en/m-and-m-results-q4-f26-and-fy26",
+    "use": "Reported FY26 consolidated revenue \u20b9198,639 crore, PAT \u20b917,099 crore, ROE 20.1%, EPS \u20b9152.2, SUV and LCV market-share highlights."
+  },
+  {
+    "id": "F4",
+    "title": "NSE India, Mahindra & Mahindra Limited quote and historical stock information",
+    "url": "https://www.nseindia.com/get-quote/equity/M%26M/Mahindra-%26-Mahindra-Limited",
+    "use": "Exchange reference for market price, 52-week range and valuation snapshot; values change over time."
+  },
+  {
+    "id": "F5",
+    "title": "Mahindra & Mahindra FY2025\u201326 Integrated Annual Report",
+    "url": "https://www.mahindra.com/annual-report-FY2026/index.html",
+    "use": "Management narrative, sector overview, market share, segment and strategic context."
+  },
+  {
+    "id": "T1",
+    "title": "Yahoo Finance public historical market data interface (accessed at run time)",
+    "url": "https://finance.yahoo.com/",
+    "use": "Daily OHLCV data downloaded through yfinance; the script saves exact coverage metadata. Technical indicator results depend on the data source and observation date."
+  },
+  {
+    "id": "P1",
+    "title": "Maruti Suzuki India Ltd., annual report and financial disclosures",
+    "url": "https://www.marutisuzuki.com/corporate/investors",
+    "use": "Peer company disclosures; peer price history is used only for market-performance context here."
+  }
+]

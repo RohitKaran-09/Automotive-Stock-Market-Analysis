@@ -1,0 +1,47 @@
+{
+  "generated_at_local": "2026-10-13T19:33:38+00:00",
+  "source": "Yahoo Finance via yfinance; OHLCV series downloaded at run time",
+  "period_requested": "5y",
+  "observed_start": "2021-10-13",
+  "observed_end": "2026-10-12",
+  "tickers": {
+    "M&M.NS": {
+      "name": "Mahindra & Mahindra",
+      "rows": 1235,
+      "start": "2021-10-13",
+      "end": "2026-10-12",
+      "latest_close": 2813.0
+    },
+    "MARUTI.NS": {
+      "name": "Maruti Suzuki",
+      "rows": 1235,
+      "start": "2021-10-13",
+      "end": "2026-10-12",
+      "latest_close": 11315.0
+    },
+    "^NSEI": {
+      "name": "Nifty 50",
+      "rows": 1234,
+      "start": "2021-10-13",
+      "end": "2026-10-12",
+      "latest_close": 22363.349609375
+    }
+  },
+  "fundamental_periods": [
+    "FY2025",
+    "FY2026"
+  ],
+  "fundamental_source": "M&M Integrated Annual Report FY2025-26 and audited results release",
+  "synthetic_price_data_used": false,
+  "charts": [
+    "01_fundamental_revenue_profit.png",
+    "02_fundamental_margins.png",
+    "03_cashflow_capex.png",
+    "04_price_moving_averages.png",
+    "05_rsi14.png",
+    "06_macd.png",
+    "07_bollinger_bands.png",
+    "08_volume.png",
+    "09_relative_performance.png"
+  ]
+}
