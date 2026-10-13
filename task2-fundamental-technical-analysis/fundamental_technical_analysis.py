@@ -514,6 +514,22 @@ def build_report(fin_df, tech, summary, paths, metadata):
     doc.add_heading("3.5 Valuation and fundamental risks",2)
     doc.add_paragraph("The NSE quote page on 12 October 2026 showed M&M at ₹2,813, with a reported symbol P/E of 17.18 and 52-week range of ₹2,744.30–₹3,839.90 [F4]. These are timestamped market observations and will change. P/E is most useful when paired with expected earnings growth, capital intensity, cyclicality, competitive positioning and the quality of earnings. A lower P/E can reflect a lower expected growth rate or higher risk; a higher P/E can reflect expectations already embedded in the share price.")
     doc.add_paragraph("Fundamental risks include cyclical vehicle demand, financing affordability, commodity/input costs, discounting, product recalls/quality, model-cycle timing, competition in SUVs and electric vehicles, export-market fluctuations, regulation and group-level complexity. Financial services can add funding, credit-cost and asset-quality exposure. The analyst should monitor monthly sales and quarterly segment disclosures and test whether market-share gains translate into profitability and cash flow.")
+    doc.add_page_break()
+    doc.add_heading("3.6 Fundamental visualizations",1)
+    fundamental_figures = [
+      (paths[0], "Figure 1. Consolidated Income and Owner Profit", "Income from operations and profit attributable to owners both increased from FY25 to FY26. Read this together with margin changes; absolute growth alone does not explain returns or cash quality."),
+      (paths[1], "Figure 2. EBITDA-Like and Owner PAT Margins", "The report's explicitly defined EBITDA-like margin eased slightly while owner PAT margin improved. This emphasizes why multiple profit measures are needed."),
+      (paths[2], "Figure 3. Operating Cash Flow and Capex", "Operating cash flow rose strongly and PPE/intangible capex eased. CFO less capex is only a simplified proxy because consolidated cash flows include financial-services movements.")
+    ]
+    for idx, (img, title, note) in enumerate(fundamental_figures):
+      if idx == 2:
+        doc.add_page_break()
+      hp = doc.add_heading(title,2); hp.paragraph_format.keep_with_next = True
+      doc.add_picture(str(img),width=Inches(5.9))
+      doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+      doc.paragraphs[-1].paragraph_format.keep_together = True
+      np = doc.add_paragraph(note); np.paragraph_format.keep_together = True
+
     doc.add_heading("4. Technical analysis",1)
     doc.add_heading("4.1 Trend and moving averages",2)
     doc.add_paragraph(
@@ -530,6 +546,25 @@ def build_report(fin_df, tech, summary, paths, metadata):
     doc.add_heading("4.6 Relative performance",2)
     if d_summary:
       doc.add_paragraph(f"Over the observed one-year window, M&M price return was {fmt_pct(s['return_1y'])} and Nifty 50 was {fmt_pct(d_summary['return_1y'])}; over three years, M&M was {fmt_pct(s['return_3y'])} and Nifty 50 {fmt_pct(d_summary['return_3y'])}. For Maruti Suzuki, the one-year price return was {fmt_pct(maruti.get('return_1y'))}. These are window-specific price returns, not forecasts or total-return comparisons.")
+    doc.add_page_break()
+    doc.add_heading("4.7 Technical visualizations",1)
+    technical_figures = [
+      (paths[3], "Figure 4. M&M Price Trend and Moving Averages", "The closing price is plotted with 20-, 50- and 200-day moving averages. The three averages provide short-, medium- and long-horizon trend context; they lag price and should not be used in isolation."),
+      (paths[4], "Figure 5. RSI (14)", "RSI near/below 30 is conventionally called oversold, but this is not a buy signal. Momentum indicators can remain depressed in strong downtrends."),
+      (paths[5], "Figure 6. MACD Momentum", "The MACD line below its signal line indicates weaker recent momentum under this rule. False crosses occur, particularly when price is moving sideways."),
+      (paths[6], "Figure 7. Bollinger Bands", "The band width describes recent volatility. A touch of a band is not by itself a reversal signal; price can track a band during a persistent trend."),
+      (paths[7], "Figure 8. Trading Volume", "Volume is compared with its 20-session average to help assess participation behind moves. Single-day volume may be distorted by block trades or data-provider conventions."),
+      (paths[8], "Figure 9. Three-Year Relative Price Performance", "M&M, Maruti Suzuki and Nifty 50 are rebased to 100 for easier comparison. Different business mixes and the use of price returns limit direct conclusions.")
+    ]
+    for idx, (img, title, note) in enumerate(technical_figures):
+      if idx in (2,4):
+        doc.add_page_break()
+      hp = doc.add_heading(title,2); hp.paragraph_format.keep_with_next = True
+      doc.add_picture(str(img),width=Inches(5.9))
+      doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+      doc.paragraphs[-1].paragraph_format.keep_together = True
+      np = doc.add_paragraph(note); np.paragraph_format.keep_together = True
+
     doc.add_heading("5. Fundamental and technical analysis together",1)
     doc.add_paragraph("Fundamental evidence works over earnings cycles: FY26 revenue and profit grew, reported RoE was strong, and operating cash flow improved. Technical indicators describe how the market has re-priced the stock during the rolling window. The two can diverge because prices respond to future expectations, valuation changes, market-wide risk appetite, and short-term news. A positive fundamental report does not guarantee positive short-term price action; a weak chart does not invalidate the audited accounts.")
     doc.add_paragraph(f"The current technical snapshot—{s['trend_state'].lower()}, RSI {fmt_num(s['RSI14'])}, and {s['MACD_state'].lower()}—should be treated as a dashboard, not a categorical recommendation. In practice, the analyst should specify a time horizon, scenario, price/volume invalidation level and valuation assumptions before forming a view. It is also important to check that the latest daily data are not stale and that official exchange quotes agree with third-party sources.")
