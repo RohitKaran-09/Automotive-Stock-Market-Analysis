@@ -514,8 +514,7 @@ def build_report(fin_df, tech, summary, paths, metadata):
     doc.add_heading("3.5 Valuation and fundamental risks",2)
     doc.add_paragraph("The NSE quote page on 12 October 2026 showed M&M at ₹2,813, with a reported symbol P/E of 17.18 and 52-week range of ₹2,744.30–₹3,839.90 [F4]. These are timestamped market observations and will change. P/E is most useful when paired with expected earnings growth, capital intensity, cyclicality, competitive positioning and the quality of earnings. A lower P/E can reflect a lower expected growth rate or higher risk; a higher P/E can reflect expectations already embedded in the share price.")
     doc.add_paragraph("Fundamental risks include cyclical vehicle demand, financing affordability, commodity/input costs, discounting, product recalls/quality, model-cycle timing, competition in SUVs and electric vehicles, export-market fluctuations, regulation and group-level complexity. Financial services can add funding, credit-cost and asset-quality exposure. The analyst should monitor monthly sales and quarterly segment disclosures and test whether market-share gains translate into profitability and cash flow.")
-    doc.add_page_break()
-    doc.add_heading("3.6 Fundamental visualizations",1)
+    hfund = doc.add_heading("3.6 Fundamental visualizations",1); hfund.paragraph_format.keep_with_next = True
     fundamental_figures = [
       (paths[0], "Figure 1. Consolidated Income and Owner Profit", "Income from operations and profit attributable to owners both increased from FY25 to FY26. Read this together with margin changes; absolute growth alone does not explain returns or cash quality."),
       (paths[1], "Figure 2. EBITDA-Like and Owner PAT Margins", "The report's explicitly defined EBITDA-like margin eased slightly while owner PAT margin improved. This emphasizes why multiple profit measures are needed."),
@@ -546,8 +545,7 @@ def build_report(fin_df, tech, summary, paths, metadata):
     doc.add_heading("4.6 Relative performance",2)
     if d_summary:
       doc.add_paragraph(f"Over the observed one-year window, M&M price return was {fmt_pct(s['return_1y'])} and Nifty 50 was {fmt_pct(d_summary['return_1y'])}; over three years, M&M was {fmt_pct(s['return_3y'])} and Nifty 50 {fmt_pct(d_summary['return_3y'])}. For Maruti Suzuki, the one-year price return was {fmt_pct(maruti.get('return_1y'))}. These are window-specific price returns, not forecasts or total-return comparisons.")
-    doc.add_page_break()
-    doc.add_heading("4.7 Technical visualizations",1)
+    htech = doc.add_heading("4.7 Technical visualizations",1); htech.paragraph_format.keep_with_next = True
     technical_figures = [
       (paths[3], "Figure 4. M&M Price Trend and Moving Averages", "The closing price is plotted with 20-, 50- and 200-day moving averages. The three averages provide short-, medium- and long-horizon trend context; they lag price and should not be used in isolation."),
       (paths[4], "Figure 5. RSI (14)", "RSI near/below 30 is conventionally called oversold, but this is not a buy signal. Momentum indicators can remain depressed in strong downtrends."),
