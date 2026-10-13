@@ -19,6 +19,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from docx import Document
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
@@ -499,6 +501,11 @@ def build_report(fin_df, tech, summary, paths, metadata):
     ]
     table=doc.add_table(rows=1,cols=3);table.style="Light Shading Accent 1"
     for c,t in zip(table.rows[0].cells,["Ratio / measure","Result","Formula / basis"]):c.text=t
+    # Repeat the header when the ratio table flows onto the next page.
+    header_props = table.rows[0]._tr.get_or_add_trPr()
+    header_flag = OxmlElement("w:tblHeader")
+    header_flag.set(qn("w:val"), "true")
+    header_props.append(header_flag)
     for row in ratio_rows:
       cells=table.add_row().cells
       for cell,value in zip(cells,row):cell.text=value
