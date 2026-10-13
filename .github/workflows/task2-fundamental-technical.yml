@@ -1,0 +1,70 @@
+name: Build Task 2 Fundamental and Technical Analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'task2-fundamental-technical-analysis/**'
+      - '.github/workflows/task2-fundamental-technical.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: task2-fundamental-technical
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-report:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -r task2-fundamental-technical-analysis/requirements.txt
+      - name: Download market prices and generate report
+        working-directory: task2-fundamental-technical-analysis
+        run: python fundamental_technical_analysis.py
+      - name: Upload report, description, charts, and calculations
+        uses: actions/upload-artifact@v4
+        with:
+          name: task2-fundamental-technical-analysis
+          path: |
+            task2-fundamental-technical-analysis/Fundamental_and_Technical_Analysis_Mahindra_Mahindra.docx
+            task2-fundamental-technical-analysis/Submission_Description.docx
+            task2-fundamental-technical-analysis/visualizations/
+            task2-fundamental-technical-analysis/outputs/
+            task2-fundamental-technical-analysis/fundamental_technical_analysis.py
+            task2-fundamental-technical-analysis/README.md
+            task2-fundamental-technical-analysis/requirements.txt
+            task2-fundamental-technical-analysis/submission_description.txt
+          if-no-files-found: error
+      - name: Publish generated deliverables against latest main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/task2-generated/visualizations /tmp/task2-generated/outputs
+          cp task2-fundamental-technical-analysis/Fundamental_and_Technical_Analysis_Mahindra_Mahindra.docx /tmp/task2-generated/
+          cp task2-fundamental-technical-analysis/Submission_Description.docx /tmp/task2-generated/
+          cp -a task2-fundamental-technical-analysis/visualizations/. /tmp/task2-generated/visualizations/
+          cp -a task2-fundamental-technical-analysis/outputs/. /tmp/task2-generated/outputs/
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/task2-generated/Fundamental_and_Technical_Analysis_Mahindra_Mahindra.docx task2-fundamental-technical-analysis/
+          cp /tmp/task2-generated/Submission_Description.docx task2-fundamental-technical-analysis/
+          mkdir -p task2-fundamental-technical-analysis/visualizations task2-fundamental-technical-analysis/outputs
+          cp -a /tmp/task2-generated/visualizations/. task2-fundamental-technical-analysis/visualizations/
+          cp -a /tmp/task2-generated/outputs/. task2-fundamental-technical-analysis/outputs/
+          git add task2-fundamental-technical-analysis/Fundamental_and_Technical_Analysis_Mahindra_Mahindra.docx task2-fundamental-technical-analysis/Submission_Description.docx task2-fundamental-technical-analysis/visualizations task2-fundamental-technical-analysis/outputs
+          if git diff --cached --quiet; then
+            echo "Generated files already match main."
+          else
+            git commit -m "Publish Task 2 fundamental and technical analysis report"
+            git push origin HEAD:main
+          fi
