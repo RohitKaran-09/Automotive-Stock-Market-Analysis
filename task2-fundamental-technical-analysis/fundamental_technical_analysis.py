@@ -521,8 +521,6 @@ def build_report(fin_df, tech, summary, paths, metadata):
       (paths[2], "Figure 3. Operating Cash Flow and Capex", "Operating cash flow rose strongly and PPE/intangible capex eased. CFO less capex is only a simplified proxy because consolidated cash flows include financial-services movements.")
     ]
     for idx, (img, title, note) in enumerate(fundamental_figures):
-      if idx == 2:
-        doc.add_page_break()
       hp = doc.add_heading(title,2); hp.paragraph_format.keep_with_next = True
       doc.add_picture(str(img),width=Inches(5.9))
       doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -555,8 +553,6 @@ def build_report(fin_df, tech, summary, paths, metadata):
       (paths[8], "Figure 9. Three-Year Relative Price Performance", "M&M, Maruti Suzuki and Nifty 50 are rebased to 100 for easier comparison. Different business mixes and the use of price returns limit direct conclusions.")
     ]
     for idx, (img, title, note) in enumerate(technical_figures):
-      if idx in (2,4):
-        doc.add_page_break()
       hp = doc.add_heading(title,2); hp.paragraph_format.keep_with_next = True
       doc.add_picture(str(img),width=Inches(5.9))
       doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
