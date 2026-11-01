@@ -28,3 +28,6 @@ The script uses disclosed/verified financial values and performs all calculation
 
 ## Important interpretation limits
 Company-defined operating margins and financial ratios may use different denominators or definitions. M&M's report explicitly excludes financial-services business from selected debt/coverage ratios; Maruti's near-zero borrowings mainly comprise lease liabilities. These distinctions are documented in the report. This is an educational financial-health review, not investment advice or a target-price recommendation.
+
+## Published summary
+See [analysis-summary.md](analysis-summary.md) for key FY25/FY26 comparison tables, derived ratios, conclusions and public references. The detailed submission files are included in the complete project ZIP supplied with this task.
