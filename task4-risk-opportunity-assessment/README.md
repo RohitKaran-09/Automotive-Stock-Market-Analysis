@@ -24,3 +24,9 @@ python risk_opportunity_assessment.py
 ```
 
 The project is educational market research, not personalised investment advice or a buy/sell recommendation.
+
+## Published register files
+- `outputs/risk_register.csv` — 12 identified risks and analyst likelihood/impact scores.
+- `outputs/opportunity_register.csv` — 9 opportunities and qualitative readiness/impact scores.
+- `outputs/monitoring_dashboard.csv` — evidence and escalation triggers.
+- `outputs/source_register.json` — public sources used in the report.
