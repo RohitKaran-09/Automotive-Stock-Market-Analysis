@@ -1,0 +1,13 @@
+ID,Risk,Likelihood,Impact,Score,Priority
+R1,Demand-cycle and affordability slowdown,3,4,12,High
+R2,Commodity energy and input-cost shock,4,5,20,Critical
+R3,Geopolitical disruption and export/logistics exposure,4,4,16,Critical
+R4,EV transition and technology-execution risk,4,4,16,Critical
+R5,Regulatory and compliance-cost risk,4,4,16,Critical
+R6,Interest-rate credit and financing risk,3,4,12,High
+R7,Supplier concentration and critical-component shortage,3,4,12,High
+R8,Product quality safety recall and warranty risk,2,5,10,High
+R9,FX and imported-content risk,3,3,9,Medium
+R10,Equity valuation and market-sentiment risk,4,4,16,Critical
+R11,Cybersecurity connected-vehicle and data risk,3,4,12,High
+R12,Inventory dealer-channel and working-capital risk,3,3,9,Medium
