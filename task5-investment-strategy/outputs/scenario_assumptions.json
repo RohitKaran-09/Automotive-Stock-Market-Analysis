@@ -1,0 +1,22 @@
+{
+  "time_horizon_years": 3,
+  "bear": {
+    "eps_cagr": 0.02,
+    "terminal_multiple_change": -0.2,
+    "dividend_contribution_per_year": 0.01,
+    "illustrative_annualised_total_return_pct": -4.4
+  },
+  "base": {
+    "eps_cagr": 0.1,
+    "terminal_multiple_change": 0,
+    "dividend_contribution_per_year": 0.01,
+    "illustrative_annualised_total_return_pct": 11
+  },
+  "bull": {
+    "eps_cagr": 0.15,
+    "terminal_multiple_change": 0.1,
+    "dividend_contribution_per_year": 0.01,
+    "illustrative_annualised_total_return_pct": 19.7
+  },
+  "note": "Sensitivity illustration only; not a forecast, probability-weighted expected return, or target price."
+}
