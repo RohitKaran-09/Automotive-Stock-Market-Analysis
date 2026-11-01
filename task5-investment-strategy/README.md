@@ -7,9 +7,8 @@
 Integrate Weeks 1–4 into a disciplined, illustrative three-year strategy for India's listed automotive sector. This project combines industry demand and policy context, M&M/Maruti fundamental findings, historical technical research, and the prior risk/opportunity assessment.
 
 ## Deliverables
-- `Automotive_Investment_Strategy_Proposal_Week5.docx` — 4,476 words in paragraphs, with additional comparison tables, eight visualizations, portfolio strategy, entry framework, scenarios, risk controls, roadmap and references.
-- `Submission_Description.docx` and `submission_description.txt` — 408-word portal description.
-- `visualizations/` — eight charts.
+- `Automotive_Investment_Strategy_Proposal_Week5.docx` — 4,476 words in paragraphs, with additional comparison tables, eight visualizations, portfolio strategy, entry framework, scenarios, risk controls, roadmap and references. The Word report and chart image files are included in the companion downloadable project ZIP; they are not individually committed in this GitHub folder.
+- `Submission_Description.docx` and `submission_description.txt` — 408-word portal description. The DOCX version is included in the companion ZIP; the editable TXT version is committed here.
 - `outputs/model_portfolio.csv` — illustrative sector-sleeve allocation.
 - `outputs/risk_register.csv` and `outputs/opportunity_register.csv` — scored registers.
 - `outputs/scenario_assumptions.json` — bear/base/bull sensitivity assumptions.
@@ -31,3 +30,6 @@ python create_task5_project.py
 ```
 
 The full Word report, editable description, generator and visualizations are included in the downloadable project ZIP. This is educational research, not personalised investment advice or a buy/sell recommendation.
+
+## Companion project package
+The GitHub folder contains the strategy summary, editable portal description, model allocation, scenario assumptions, and risk/opportunity/monitoring registers. The complete deliverable package—with the two Word documents, eight PNG charts, and full readable Python generator—is provided as `Automotive_Investment_Strategy_Proposal_Week5_Project.zip` in the ChatGPT task handoff.
