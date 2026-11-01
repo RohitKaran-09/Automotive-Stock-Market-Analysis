@@ -1,0 +1,8 @@
+Area,Indicators,Frequency,Action trigger
+Demand,"SIAM segment volumes; FADA/VAHAN retail; wholesale-retail gap; bookings; inventory",Monthly,"If wholesale exceeds retail persistently and inventory/discounts rise, pause additions."
+Profitability,"Realisation, segment margin, material cost, EBITDA and price actions",Quarterly,"If input costs rise while margins and cash flow deteriorate, cut the affected position."
+Cash / solvency,"CFO, capex, net debt, working capital and interest cover",Quarterly,"If earnings fail to convert into cash or leverage rises beyond plan, re-rate risk."
+EV transition,"EV share, price competitiveness, contribution margin, warranty, charging uptime",Quarterly,"If volumes rise but losses or warranty costs expand, reduce EV premium assumption."
+Policy,"PM E-DRIVE notifications, CAFE timetable, safety / localisation requirements",Monthly,"Recalculate product mix, compliance capex and eligible incentive assumptions."
+Supply chain,"Lead times, single-source parts, gas/power, supplier financial health",Monthly,"Escalate when a critical part has no qualified alternate or production buffer."
+Valuation / technical,"P/E vs own history, earnings revisions, price vs 50/200DMA, RSI/volume",Monthly,"Trim when multiple rerates without earnings; add only when fair value and trend gates align."
