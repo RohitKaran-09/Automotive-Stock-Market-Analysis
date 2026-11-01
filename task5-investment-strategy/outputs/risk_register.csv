@@ -1,0 +1,13 @@
+Risk,Likelihood_1_5,Impact_1_5,Score,Monitoring_indicator,Mitigation
+Demand slowdown / affordability,4,4,16,"Wholesale-retail gap, dealer inventory, discounts, registrations","Stage buys; prefer entry-level breadth and low-cost operators; reduce if inventory rises with retail weakness."
+Commodity energy and freight shock,4,5,20,"Steel, aluminium, copper, rubber, battery materials, gas, freight","Stress-test gross margin; review supplier pass-through, hedges, dual sourcing and price actions."
+Geopolitical / export disruption,4,4,16,"Export volumes, destination mix, shipping time, insurance and FX","Avoid single-destination dependence; diversify OEM and supplier exposure; preserve cash."
+EV transition execution,4,4,16,"EV share, contribution margin, warranty claims, utilisation, localisation","Use staged exposure; demand evidence of cost parity and positive unit economics before scaling."
+CAFE / safety / emissions regulation,4,4,16,"Compliance capex, fleet efficiency, product mix and homologation","Prefer manufacturers with multi-powertrain engineering and visible compliance roadmaps."
+Interest-rate / vehicle finance,3,4,12,"Loan rates, approvals, delinquencies, average ticket size","Monitor affordability and lender quality; avoid over-weighting entry-level credit-sensitive demand."
+Supplier concentration / component shortage,3,4,12,"Single-source parts, lead times, buffer stocks, supplier liquidity","Prefer OEMs with qualified alternates and supplier support; review critical tier-2 dependencies."
+Product recall / quality / warranty,2,5,10,"Recall notices, warranty provisions, complaints, service campaigns","Treat repeated quality problems as thesis-breaking; diversify OEM exposure."
+FX and imported content,3,3,9,"INR, imported components, export receivables and hedges","Balance exporters and domestic businesses; monitor net natural hedge."
+Valuation / market sentiment,4,4,16,"Index and company P/E vs own history, earnings revisions, breadth","Require margin of safety; rebalance after sharp rerating; do not chase theme momentum."
+Cyber / connected-vehicle / data,3,4,12,"Recall/cyber events, software updates, data incidents","Monitor governance, patching and supplier standards; treat repeated incidents seriously."
+Dealer inventory / working capital,3,3,9,"Inventory days, wholesale vs retail, receivables and cash conversion","Prefer stock turns and cash generation over headline dispatch growth."
